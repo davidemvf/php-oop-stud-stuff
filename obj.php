@@ -34,10 +34,27 @@ class Studente extends Persona {
   }
 };
 
+class Professore extends Persona {
+  public $specializzazione;
+  public $paga;
+
+  public function __construct($nome, $cognome, $indirizzo, $specializzazione, $paga) {
+
+    parent::__construct($nome, $cognome, $indirizzo);
+    $this -> specializzazione = $specializzazione;
+    $this -> paga = $paga;
+  }
+
+  public function toString() {
+    return  parent::toString() . '<br>' . 'Specializzazione: ' . $this -> specializzazione . '<br>' . 'Paga: ' . $this -> paga . 'Eur';
+  }
+};
+
 $persona1 = new Persona ("Davide", "Fiore", "Via dei Matti");
 $studente1 = new Studente ("Mario", "Rossi", "Via dei Matti", "Energetico", "Pagate");
+$prof1 = new Professore ("Giovanni", "Verdi", "Via Bella", "Microtecnologie", 2500);
 
 echo "<br> Persona: <br>" . $persona1 -> toString() . '<br><br>';
 echo "Studente: <br>" . $studente1 -> toString() . '<br><br>';
-
+echo "Professore: <br>" . $prof1 -> toString() . '<br><br>;'
 ?>

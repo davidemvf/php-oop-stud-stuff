@@ -1,5 +1,24 @@
 <?php
+
+
+
+/**
+ * Funzione per stampare Nome e Cognome separati da spazio
+ */
+trait FullName
+{
+  public function FullName()
+  {
+    return $this -> nome . ' ' . $this -> cognome;
+  }
+};
+
+
+
+
 Class Persona {
+
+  use FullName;
 
   public $nome;
   public $cognome;
@@ -14,7 +33,7 @@ Class Persona {
 
   public function toString() {
 
-    return '<br>' . 'Nome: ' . $this -> nome . '<br>' . 'Cognome: ' . $this -> cognome . '<br>' . 'Indirizzo: ' . $this -> indirizzo;
+    return '<br>' . $this -> FullName() . '<br>' . 'Indirizzo: ' . $this -> indirizzo;
   }
 };
 
@@ -46,7 +65,7 @@ class Professore extends Persona {
   }
 
   public function toString() {
-    return  parent::toString() . '<br>' . 'Specializzazione: ' . $this -> specializzazione . '<br>' . 'Paga: ' . $this -> paga . 'Eur';
+    return  parent::toString() . '<br>' . 'Specializzazione: ' . $this -> specializzazione . '<br>' . 'Paga: ' . $this -> paga . ' Eur';
   }
 };
 
@@ -56,5 +75,5 @@ $prof1 = new Professore ("Giovanni", "Verdi", "Via Bella", "Microtecnologie", 25
 
 echo "<br> Persona: <br>" . $persona1 -> toString() . '<br><br>';
 echo "Studente: <br>" . $studente1 -> toString() . '<br><br>';
-echo "Professore: <br>" . $prof1 -> toString() . '<br><br>;'
+echo "Professore: <br>" . $prof1 -> toString() . '<br><br>';
 ?>
